@@ -8,9 +8,16 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@firebase/app": "^0.4.19",
+    "@firebase/firestore": "^1.6.1",
     "animate.css": "^3.7.2",
+    "apexcharts": "^3.8.6",
     "core-js": "^2.6.5",
+    "gotrue-js": "^0.9.25",
+    "netlify-identity-widget": "^1.5.5",
     "vue": "^2.6.10",
+    "vue-apexcharts": "^1.5.0",
+    "vue-firestore": "^0.3.22",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1"
   },

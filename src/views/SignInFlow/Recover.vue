@@ -1,11 +1,12 @@
 <template>
   <div>
+    <RequestAccount />
     <div class="container">
       <div class="login">
         <img src="@/assets/DCHQ.svg" v-show="isDarkMode" />
         <img src="@/assets/DCHQ-dark.svg" v-show="!isDarkMode" />
         <h4 :class="[isDarkMode ? 'light-text' : 'dark-text']">
-          Request Account
+          Recover Account
         </h4>
         <form @submit.prevent="onSubmit">
           <input
@@ -14,7 +15,7 @@
             :class="[isDarkMode ? 'light-field' : 'dark-field']"
             v-model="email"
           />
-          <button>Request Account</button>
+          <button>Send Email</button>
         </form>
         <router-link
           to="/signin"
@@ -28,11 +29,13 @@
 </template>
 
 <script>
+import RequestAccount from "@/components/RequestAccount";
 import ThemeSwitch from "@/components/ThemeSwitch";
+import { auth } from "@/main";
 
 export default {
-  name: "Request",
-  components: { ThemeSwitch },
+  name: "Recover",
+  components: { RequestAccount, ThemeSwitch },
   data() {
     return {
       email: null,
@@ -56,28 +59,18 @@ export default {
   methods: {
     onSubmit() {
       const email = this.email;
-      // Slack API logic
-      let slackURL = new URL("https://slack.com/api/chat.postMessage");
-      const data = {
-        token:
-          "xoxp-781113281539-794450320055-792610645872-5a77229eb043a1d86b83dec6b9e3d21f",
-        channel: "hq",
-        text: `${email} has requested admin access to HQ. Please go to Netlify to invite them.`
-      };
-
-      slackURL.search = new URLSearchParams(data);
-
-      fetch(slackURL).then(() => {
-        this.$router
-          .push({
+      auth
+        .requestPasswordRecovery(email)
+        .then(() => {
+          this.$router.push({
             name: "signin",
             params: {
-              userRequestedAccount: true,
+              userRecoveredAccount: true,
               email
             }
-          })
-          .catch(error => alert("Error:" + error));
-      });
+          });
+        })
+        .catch(error => alert("Error" + error));
     }
   }
 };

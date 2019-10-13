@@ -6,7 +6,7 @@
       :class="[isDarkMode ? 'light-request' : 'dark-request']"
     >
       Don't have a Design+Code HQ account?
-      <router-link to="/request">Request an account</router-link>
+      <router-link to="/request">&nbsp;&nbsp;Request an account</router-link>
     </div>
   </transition>
 </template>
@@ -32,9 +32,14 @@ export default {
 
 <style lang="scss" scoped>
 .request {
-  position: absolute;
-  top: 40px;
-  right: 40px;
+  /* position: absolute;
+  top: 20px;
+  right: 20px; */
+  height: 60px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-right: 2em;
 }
 
 .light-request {

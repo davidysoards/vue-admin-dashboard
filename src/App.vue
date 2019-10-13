@@ -1,5 +1,8 @@
 <template>
-  <div id="app">
+  <div
+    id="app"
+    :class="{ 'light-background': !isDarkMode, 'dark-background': isDarkMode }"
+  >
     <router-view />
   </div>
 </template>
@@ -14,6 +17,11 @@ export default {
     document.body.style.background = isDarkMode
       ? this.$store.state.darkBgColor
       : this.$store.state.lightBgColor;
+  },
+  computed: {
+    isDarkMode() {
+      return this.$store.getters.isDarkMode;
+    }
   }
 };
 </script>
@@ -30,6 +38,10 @@ h1 {
 
 p {
   @include large-text-bold($purple);
+  line,
+  text {
+    opacity: 0.2;
+  }
 }
 
 h4 {
@@ -83,24 +95,23 @@ a {
   -moz-osx-font-smoothing: grayscale;
   color: $white;
 }
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: $white;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 
 /* THEME */
 .light-background {
   background-color: $light-gray;
+  line,
+  text {
+    stroke: $black;
+  }
 }
 
 .dark-background {
   background-color: $dark-blue;
+  line,
+  text {
+    stroke: $light-gray;
+    opacity: 0.3;
+  }
 }
 
 .light-text {
@@ -114,6 +125,7 @@ a {
 .light-field {
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  color: $white;
   &::placeholder {
     color: rgba(255, 255, 255, 0.3);
   }
@@ -122,6 +134,7 @@ a {
 .dark-field {
   background: rgba(198, 208, 235, 0.2);
   border: 1px solid rgba(0, 0, 0, 0.2);
+  color: $black;
   &::placeholder {
     color: rgba(0, 0, 0, 0.3);
   }
@@ -133,5 +146,15 @@ a {
 
 .dark-link {
   color: rgba($color: #000000, $alpha: 0.3);
+}
+
+.light-box {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-box {
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 </style>
