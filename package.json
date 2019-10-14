@@ -1,39 +1,42 @@
 {
-  "name": "vue-admin-dashboard",
+  "name": "dys-vue-admin-dashboard",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "start:lambda": "netlify-lambda serve src/functions",
+    "build:lambda": "netlify-lambda build src/functions",
+    "build:vue": "vue-cli-service build"
   },
   "dependencies": {
-    "@firebase/app": "^0.4.19",
-    "@firebase/firestore": "^1.6.1",
-    "animate.css": "^3.7.2",
-    "apexcharts": "^3.8.6",
-    "core-js": "^2.6.5",
-    "gotrue-js": "^0.9.25",
-    "netlify-identity-widget": "^1.5.5",
-    "vue": "^2.6.10",
-    "vue-apexcharts": "^1.5.0",
-    "vue-firestore": "^0.3.22",
-    "vue-router": "^3.0.3",
+    "@firebase/app": "^0.3.8",
+    "@firebase/firestore": "^1.0.2",
+    "@netlify/zip-it-and-ship-it": "^0.2.0",
+    "animate.css": "^3.7.0",
+    "apexcharts": "^3.2.2",
+    "firebase-admin": "^7.0.0",
+    "gotrue-js": "^0.9.24",
+    "netlify-identity-widget": "^1.5.2",
+    "netlify-lambda": "^1.4.2",
+    "vue": "^2.5.21",
+    "vue-apexcharts": "^1.2.9",
+    "vue-firestore": "^0.3.16",
+    "vue-github-buttons": "^3.0.1",
+    "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.11.0",
-    "@vue/cli-plugin-eslint": "^3.11.0",
-    "@vue/cli-service": "^3.11.0",
-    "@vue/eslint-config-prettier": "^5.0.0",
+    "@vue/cli-plugin-babel": "^3.3.0",
+    "@vue/cli-plugin-eslint": "^3.3.0",
+    "@vue/cli-service": "^3.3.0",
+    "@vue/eslint-config-prettier": "^4.0.1",
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.16.0",
-    "eslint-plugin-prettier": "^3.1.0",
+    "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
-    "prettier": "^1.18.2",
     "sass": "^1.18.0",
-    "sass-loader": "^7.1.0",
-    "vue-template-compiler": "^2.6.10"
+    "sass-loader": "^7.0.1",
+    "vue-template-compiler": "^2.5.21"
   },
   "eslintConfig": {
     "root": true,
@@ -41,8 +44,7 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/essential",
-      "@vue/prettier"
+      "plugin:vue/essential"
     ],
     "rules": {},
     "parserOptions": {
@@ -56,6 +58,7 @@
   },
   "browserslist": [
     "> 1%",
-    "last 2 versions"
+    "last 2 versions",
+    "not ie <= 8"
   ]
 }
