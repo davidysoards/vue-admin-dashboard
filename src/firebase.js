@@ -2,7 +2,7 @@ import { firebase } from "@firebase/app";
 import "@firebase/firestore";
 
 const firebaseApp = firebase.initializeApp({
-  apiKey: "AIzaSyAuSuCFldqd590EGwaEk-8zPEiK4oxP8as",
+  apiKey: process.env.VUE_APP_FIREBASE_KEY,
   authDomain: "vue-hq-66b28.firebaseapp.com",
   databaseURL: "https://vue-hq-66b28.firebaseio.com",
   projectId: "vue-hq-66b28",

@@ -59,8 +59,7 @@ export default {
       // Slack API logic
       let slackURL = new URL("https://slack.com/api/chat.postMessage");
       const data = {
-        token:
-          "xoxp-781113281539-794450320055-792610645872-5a77229eb043a1d86b83dec6b9e3d21f",
+        token: process.env.VUE_APP_SLACK_TOKEN,
         channel: "hq",
         text: `${email} has requested admin access to HQ. Please go to Netlify to invite them.`
       };
